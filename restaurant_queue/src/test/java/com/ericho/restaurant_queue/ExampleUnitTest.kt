@@ -1,4 +1,4 @@
-package com.ericho.buy_movie_ticket
+package com.ericho.restaurant_queue
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
