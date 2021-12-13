@@ -4,12 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.ericho.composefeatureproj.ui.AppPage
 import com.ericho.composefeatureproj.ui.theme.ComposeFeatureProjTheme
+import com.ericho.restaurant_queue.ui.TicketView
 import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,8 +20,8 @@ class PullActivity : ComponentActivity() {
         setContent {
             ComposeFeatureProjTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting2("Android")
+                AppPage("Instant App") {
+                    TicketView()
                 }
             }
         }
