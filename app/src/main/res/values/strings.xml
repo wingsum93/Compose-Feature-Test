@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Compose Feature Proj</string>
     <string name="title_restaurant_queue">Restaurant Ticket</string>
+    <string name="title_activity_pull">PullActivity</string>
 </resources>

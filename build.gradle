@@ -7,7 +7,7 @@ buildscript {
             'compileSdk'        : 31,
             'minSdk'            : 21,
             'targetSdk'         : 31,
-            'kotlin'            : '1.6.10-RC',
+            'kotlin'            : '1.5.31',
             'playcore'          : '1.8.1',
             'appcompat'         : '1.4.0',
             'espresso'          : '3.4.0',
@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10-RC'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
