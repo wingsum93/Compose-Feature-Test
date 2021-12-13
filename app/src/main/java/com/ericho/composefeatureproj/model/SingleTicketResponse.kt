@@ -6,5 +6,7 @@ class SingleTicketResponse {
 
     class Data {
         val ready: Int = 1
+        val hasTable: Boolean
+            get() = ready == 1
     }
 }
