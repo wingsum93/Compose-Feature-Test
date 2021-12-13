@@ -23,23 +23,31 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter
-                android:autoVerify="true"
-                android:order="1">
+
+            <meta-data
+                android:name="default-url"
+                android:value="https://restaurants-queue.herokuapp.com/" />
+
+            <intent-filter android:order="1">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:host="restaurants-queue.herokuapp.com" />
-                <data android:path="/" />
+                <data
+                    android:scheme="http"
+                    android:host="restaurants-queue.herokuapp.com" />
             </intent-filter>
+            <intent-filter android:order="1">
+                <action android:name="android.intent.action.VIEW" />
 
-            <meta-data
-                android:name="default-url"
-                android:value="https://restaurants-queue.herokuapp.com/" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="restaurants-queue.herokuapp.com" />
+            </intent-filter>
         </activity>
     </application>
 
