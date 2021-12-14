@@ -10,10 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.ericho.composefeatureproj.model.SeatQueue
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 @Preview
 fun TicketView(

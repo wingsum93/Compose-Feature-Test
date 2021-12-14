@@ -3,16 +3,9 @@ package com.ericho.composefeatureproj
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ericho.composefeatureproj.api.RestaurantRepo
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor() : ViewModel() {
-
-    val repo = RestaurantRepo()
-
-//    val a = State
+class MainViewModel constructor(val repo: RestaurantRepo) : ViewModel() {
 
     init {
 

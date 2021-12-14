@@ -1,10 +1,13 @@
 package com.ericho.restaurant_queue
 
 import androidx.lifecycle.ViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.ericho.composefeatureproj.api.RestaurantRepo
+import com.ericho.composefeatureproj.di.Injection
+import com.ericho.composefeatureproj.model.SeatQueue
 
-@HiltViewModel
-class PullViewModel() : ViewModel() {
+class PullViewModel constructor() : ViewModel() {
 
+    val repo: RestaurantRepo = Injection.provideRestaurantRepo()
+    val items: List<SeatQueue> = repo.getRestaurantList()
 
 }

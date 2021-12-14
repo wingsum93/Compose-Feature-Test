@@ -1,22 +1,17 @@
 package com.ericho.composefeatureproj.api
 
+import com.ericho.composefeatureproj.R
 import com.ericho.composefeatureproj.model.Queue
+import com.ericho.composefeatureproj.model.SeatQueue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import java.io.IOException
 
-class RestaurantRepo {
-    private val client = OkHttpClient.Builder()
-        .build()
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://restaurants-queue.herokuapp.com")
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
+class RestaurantRepo constructor(
+    retrofit: Retrofit
+) {
 
     private val api: RestaurantAPI = retrofit.create()
 
@@ -82,5 +77,11 @@ class RestaurantRepo {
                 Result.failure(e)
             }
         }
+    }
+
+    fun getRestaurantList(): List<SeatQueue> {
+        val first = SeatQueue("One Person", R.drawable.cook_11as)
+        val second = SeatQueue("Two Person", R.drawable.cook_11as)
+        return listOf(first, second)
     }
 }
