@@ -21,16 +21,31 @@ fun NumberPadDisplayView(
         modifier = modifier
             .size(150.dp, 50.dp)
     ) {
-        Text(
-            text = text,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp, 0.dp)
-                .align(Alignment.Center),
-            textAlign = TextAlign.End,
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold
-        )
+        if (text == "") {
+            // ui for not yet input no.
+            Text(
+                text = "Please Input The Number of people",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp, 0.dp)
+                    .align(Alignment.Center),
+                textAlign = TextAlign.Start,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Light
+            )
+        } else {
+            // ui for input no.
+            Text(
+                text = text,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp, 0.dp)
+                    .align(Alignment.Center),
+                textAlign = TextAlign.End,
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
 

@@ -92,7 +92,7 @@ fun NumberPad(
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadButton(
                 "3"
-            ) {}
+            ) { onNumberClick.invoke(3) }
             Spacer(modifier = Modifier.width(10.dp))
         }
         Spacer(modifier = Modifier.height(5.dp))
