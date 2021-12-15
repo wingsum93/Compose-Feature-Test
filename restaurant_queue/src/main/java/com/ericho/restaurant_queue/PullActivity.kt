@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import com.ericho.restaurant_queue.ui.NumberPad
 import com.google.android.play.core.splitcompat.SplitCompat
 
 class PullActivity : ComponentActivity() {
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -74,6 +76,7 @@ class PullActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalAnimationApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {

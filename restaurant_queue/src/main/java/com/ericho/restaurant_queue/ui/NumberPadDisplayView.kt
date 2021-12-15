@@ -1,15 +1,20 @@
 package com.ericho.restaurant_queue.ui
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ericho.composefeatureproj.ui.theme.Grey
 
 @Composable
 fun NumberPadDisplayView(
@@ -20,6 +25,7 @@ fun NumberPadDisplayView(
     Box(
         modifier = modifier
             .size(150.dp, 50.dp)
+            .padding(10.dp, 0.dp)
     ) {
         if (text == "") {
             // ui for not yet input no.
@@ -27,7 +33,6 @@ fun NumberPadDisplayView(
                 text = "Please Input The Number of people",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp, 0.dp)
                     .align(Alignment.Center),
                 textAlign = TextAlign.Start,
                 fontSize = 20.sp,
@@ -39,8 +44,10 @@ fun NumberPadDisplayView(
                 text = text,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp, 0.dp)
-                    .align(Alignment.Center),
+                    .border(BorderStroke(2.dp, Color.Black))
+                    .background(Grey)
+                    .align(Alignment.Center)
+                    .padding(10.dp, 0.dp),
                 textAlign = TextAlign.End,
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
