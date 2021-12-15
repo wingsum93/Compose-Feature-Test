@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,10 +35,22 @@ class PullActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .fillMaxHeight()
                     ) {
+                        val displayString = remember { mutableStateOf("") }
                         NumberPad(
                             modifier = Modifier
                                 .padding(20.dp)
-                                .align(Alignment.Center)
+                                .align(Alignment.Center),
+                            displayNumberState = displayString,
+                            onNumberClick = {
+                                val nextValue = displayString.value + it
+                                if (canEnterThisDigit(nextValue)) {
+                                    displayString.value = nextValue
+                                }
+                            },
+                            onEnterClick = {},
+                            onResetClick = {
+                                displayString.value = ""
+                            }
                         )
                     }
 
@@ -48,6 +62,15 @@ class PullActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase)
         SplitCompat.install(this)
+    }
+
+    private fun canEnterThisDigit(currentString: String): Boolean {
+        return try {
+            val inputNumber = currentString.toInt()
+            return inputNumber in 1..10
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 }
 
@@ -64,7 +87,8 @@ fun DefaultPreview2() {
                 NumberPad(
                     modifier = Modifier
                         .padding(20.dp)
-                        .align(Alignment.Center)
+                        .align(Alignment.Center),
+                    displayNumberState = mutableStateOf("")
                 )
             }
         }

@@ -1,7 +1,10 @@
 package com.ericho.restaurant_queue.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -9,13 +12,14 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun NumberPad(
     modifier: Modifier = Modifier,
+    displayNumberState: State<String>,
     onNumberClick: (Int) -> Unit = {},
     onEnterClick: () -> Unit = {},
     onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
         NumberPadDisplayView(
-            "778",
+            displayNumberState.value,
             Modifier
                 .width(190.dp)
                 .height(70.dp)
@@ -110,10 +114,12 @@ fun NumberPad(
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @Preview
 @Composable
 fun SeeNumberPad() {
     NumberPad(
-        modifier = Modifier.padding(20.dp)
+        modifier = Modifier.padding(20.dp),
+        displayNumberState = mutableStateOf("77")
     )
 }

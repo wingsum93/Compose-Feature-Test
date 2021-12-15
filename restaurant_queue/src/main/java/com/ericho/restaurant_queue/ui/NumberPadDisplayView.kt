@@ -38,7 +38,29 @@ fun NumberPadDisplayView(
 @Composable
 fun previewNumberDisplayView() {
     NumberPadDisplayView(
-        "778",
+        "1",
+        Modifier
+            .width(190.dp)
+            .height(70.dp)
+    )
+}
+
+@Preview
+@Composable
+fun previewNumberDisplayView_init() {
+    NumberPadDisplayView(
+        "",
+        Modifier
+            .width(190.dp)
+            .height(70.dp)
+    )
+}
+
+@Preview
+@Composable
+fun previewNumberDisplayView_3_digit() {
+    NumberPadDisplayView(
+        "123",
         Modifier
             .width(190.dp)
             .height(70.dp)
