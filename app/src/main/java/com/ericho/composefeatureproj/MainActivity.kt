@@ -1,7 +1,7 @@
 package com.ericho.composefeatureproj
 
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.ericho.composefeatureproj.ui.TicketDisplayView
 import com.ericho.composefeatureproj.ui.theme.ComposeFeatureProjTheme
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
@@ -52,6 +53,11 @@ class MainActivity : ComponentActivity() {
     }
     private lateinit var manager: SplitInstallManager
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -89,7 +95,6 @@ class MainActivity : ComponentActivity() {
         val intent = Intent().setClassName(BuildConfig.APPLICATION_ID, className)
         startActivity(intent)
     }
-
 }
 
 fun MainActivity.toastAndLog(text: String) {

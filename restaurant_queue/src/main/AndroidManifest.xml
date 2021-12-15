@@ -6,11 +6,10 @@
     <dist:module
         dist:instant="true"
         dist:title="@string/title_restaurant_queue">
+        <dist:fusing dist:include="true" />
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
-
-        <dist:fusing dist:include="false" />
     </dist:module>
 
     <application>
@@ -19,11 +18,6 @@
             android:exported="true"
             android:label="@string/title_activity_pull"
             android:theme="@style/Theme.ComposeFeatureProj.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
             <intent-filter
                 android:autoVerify="true"
                 android:order="1">
