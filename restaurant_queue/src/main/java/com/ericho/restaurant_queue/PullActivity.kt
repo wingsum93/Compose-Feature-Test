@@ -4,13 +4,16 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ericho.composefeatureproj.ui.AppPage
 import com.ericho.composefeatureproj.ui.theme.ComposeFeatureProjTheme
-import com.ericho.restaurant_queue.ui.TicketView
+import com.ericho.restaurant_queue.ui.NumberPad
 import com.google.android.play.core.splitcompat.SplitCompat
 
 class PullActivity : ComponentActivity() {
@@ -22,7 +25,9 @@ class PullActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 AppPage("Instant App") {
-                    TicketView(vm.items)
+                    NumberPad(
+                        modifier = Modifier.padding(20.dp)
+                    )
                 }
             }
         }
