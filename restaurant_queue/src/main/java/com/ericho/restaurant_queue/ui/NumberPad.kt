@@ -1,6 +1,8 @@
 package com.ericho.restaurant_queue.ui
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -9,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@ExperimentalAnimationApi
 @Composable
 fun NumberPad(
     modifier: Modifier = Modifier,
@@ -18,12 +21,15 @@ fun NumberPad(
     onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
-        NumberPadDisplayView(
-            displayNumberState.value,
-            Modifier
-                .width(190.dp)
-                .height(70.dp)
-        )
+        AnimatedContent(targetState = displayNumberState.value) { text ->
+            NumberPadDisplayView(
+                text,
+                Modifier
+                    .width(190.dp)
+                    .height(70.dp)
+            )
+        }
+
         Row(
             modifier = Modifier
                 .padding(0.dp, 10.dp)
@@ -114,6 +120,7 @@ fun NumberPad(
     }
 }
 
+@ExperimentalAnimationApi
 @SuppressLint("UnrememberedMutableState")
 @Preview
 @Composable
