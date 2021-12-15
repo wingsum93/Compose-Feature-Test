@@ -1,25 +1,35 @@
 package com.ericho.restaurant_queue.ui
 
+import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@ExperimentalAnimationApi
 @Composable
 fun NumberPad(
     modifier: Modifier = Modifier,
+    displayNumberState: State<String>,
     onNumberClick: (Int) -> Unit = {},
     onEnterClick: () -> Unit = {},
     onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
-        NumberPadDisplayView(
-            "778",
-            Modifier
-                .width(190.dp)
-                .height(70.dp)
-        )
+        AnimatedContent(targetState = displayNumberState.value) { text ->
+            NumberPadDisplayView(
+                text,
+                Modifier
+                    .width(190.dp)
+                    .height(70.dp)
+            )
+        }
+
         Row(
             modifier = Modifier
                 .padding(0.dp, 10.dp)
@@ -88,7 +98,7 @@ fun NumberPad(
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadButton(
                 "3"
-            ) {}
+            ) { onNumberClick.invoke(3) }
             Spacer(modifier = Modifier.width(10.dp))
         }
         Spacer(modifier = Modifier.height(5.dp))
@@ -110,10 +120,13 @@ fun NumberPad(
     }
 }
 
+@ExperimentalAnimationApi
+@SuppressLint("UnrememberedMutableState")
 @Preview
 @Composable
 fun SeeNumberPad() {
     NumberPad(
-        modifier = Modifier.padding(20.dp)
+        modifier = Modifier.padding(20.dp),
+        displayNumberState = mutableStateOf("77")
     )
 }
