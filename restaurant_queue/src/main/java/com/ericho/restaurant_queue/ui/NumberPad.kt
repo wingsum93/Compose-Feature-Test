@@ -10,13 +10,27 @@ import androidx.compose.ui.unit.dp
 fun NumberPad(
     modifier: Modifier = Modifier,
     onNumberClick: (Int) -> Unit = {},
-    onEnterClick: () -> Unit = {}
+    onEnterClick: () -> Unit = {},
+    onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
         NumberPadDisplayView(
             "778",
-            Modifier.width(190.dp)
+            Modifier
+                .width(190.dp)
+                .height(70.dp)
         )
+        Row(
+            modifier = Modifier
+                .padding(0.dp, 10.dp)
+        ) {
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadBigButton(
+                "Reset",
+                Modifier.width(170.dp)
+            ) { onResetClick.invoke() }
+            Spacer(modifier = Modifier.width(10.dp))
+        }
         Row(
             modifier = Modifier
             //.fillMaxHeight(0.3f)

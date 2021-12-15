@@ -4,9 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,13 +24,22 @@ class PullActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeFeatureProjTheme {
-                val vm: PullViewModel = viewModel()
+                val pullViewModel: PullViewModel = viewModel()
 
                 // A surface container using the 'background' color from the theme
                 AppPage("Instant App") {
-                    NumberPad(
-                        modifier = Modifier.padding(20.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                    ) {
+                        NumberPad(
+                            modifier = Modifier
+                                .padding(20.dp)
+                                .align(Alignment.Center)
+                        )
+                    }
+
                 }
             }
         }
@@ -39,15 +51,22 @@ class PullActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
     ComposeFeatureProjTheme {
-        Greeting2("Android")
+        AppPage("Instant App") {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+            ) {
+                NumberPad(
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .align(Alignment.Center)
+                )
+            }
+        }
     }
 }

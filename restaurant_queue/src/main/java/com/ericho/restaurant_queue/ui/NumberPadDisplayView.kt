@@ -3,6 +3,7 @@ package com.ericho.restaurant_queue.ui
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -22,19 +23,24 @@ fun NumberPadDisplayView(
     ) {
         Text(
             text = text,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp, 0.dp)
+                .align(Alignment.Center),
             textAlign = TextAlign.End,
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold
         )
     }
-    Spacer(modifier = Modifier.width(10.dp))
 }
 
 @Preview
 @Composable
 fun previewNumberDisplayView() {
     NumberPadDisplayView(
-        "777"
+        "778",
+        Modifier
+            .width(190.dp)
+            .height(70.dp)
     )
 }
