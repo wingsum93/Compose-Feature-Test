@@ -25,7 +25,7 @@ fun NumberPad(
             NumberPadDisplayView(
                 text,
                 Modifier
-                    .width(190.dp)
+                    .width(220.dp)
                     .height(70.dp)
             )
         }
@@ -101,7 +101,7 @@ fun NumberPad(
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadBigButton(
                 "Reset",
-                Modifier.width(110.dp)
+                Modifier.width(130.dp)
             ) { onResetClick.invoke() }
             Spacer(modifier = Modifier.width(10.dp))
         }
@@ -112,7 +112,7 @@ fun NumberPad(
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadBigButton(
                 "Get Ticket",
-                Modifier.width(170.dp)
+                Modifier.width(200.dp)
             ) { onEnterClick.invoke(displayNumberState.value) }
             Spacer(modifier = Modifier.width(10.dp))
         }
@@ -126,6 +126,6 @@ fun NumberPad(
 fun SeeNumberPad() {
     NumberPad(
         modifier = Modifier.padding(20.dp),
-        displayNumberState = mutableStateOf("77")
+        displayNumberState = mutableStateOf("")
     )
 }

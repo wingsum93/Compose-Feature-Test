@@ -1,5 +1,6 @@
 package com.ericho.restaurant_queue
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ericho.composefeatureproj.ui.AppPage
-import com.ericho.composefeatureproj.ui.theme.ComposeFeatureProjTheme
+import com.ericho.composefeatureproj.ui.theme.AppTheme
 import com.ericho.restaurant_queue.ui.NumberPad
 import com.google.android.play.core.splitcompat.SplitCompat
 
@@ -27,7 +28,7 @@ class PullActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeFeatureProjTheme {
+            AppTheme {
                 val pullViewModel: PullViewModel = viewModel()
 
                 // A surface container using the 'background' color from the theme
@@ -78,11 +79,12 @@ class PullActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @ExperimentalAnimationApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    ComposeFeatureProjTheme {
+    AppTheme {
         AppPage("Instant App") {
             Box(
                 modifier = Modifier
