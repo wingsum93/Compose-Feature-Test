@@ -2,7 +2,6 @@ package com.ericho.restaurant_queue.ui
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -27,8 +26,9 @@ fun NumberPadDisplayView(
     Box(
         modifier = modifier
             .size(150.dp, 60.dp)
-            .padding(10.dp, 0.dp)
-//            .border(2.dp,MaterialTheme.colorScheme.outline)
+            .padding(10.dp, 10.dp)
+            .border(2.dp, MaterialTheme.colorScheme.outline)
+            .background(MaterialTheme.colorScheme.onPrimary)
     ) {
         if (text == "") {
             // ui for not yet input no.
@@ -37,12 +37,11 @@ fun NumberPadDisplayView(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.Center)
-                    .background(MaterialTheme.colorScheme.onPrimary)
-                    .border(BorderStroke(2.dp, MaterialTheme.colorScheme.outline)),
+                    .padding(5.dp),
                 textAlign = TextAlign.Start,
-                fontSize = 20.sp,
+                fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Bold
             )
         } else {
             // ui for input no.
@@ -50,14 +49,12 @@ fun NumberPadDisplayView(
                 text = text,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .border(BorderStroke(2.dp, MaterialTheme.colorScheme.outline))
-                    .background(MaterialTheme.colorScheme.onPrimary)
                     .align(Alignment.Center)
-                    .padding(10.dp, 0.dp),
+                    .padding(5.dp),
                 textAlign = TextAlign.End,
-                fontSize = 30.sp,
+                fontSize = 26.sp,
                 color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.ExtraBold
             )
         }
     }

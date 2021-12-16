@@ -2,14 +2,17 @@ package com.ericho.restaurant_queue
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,8 +26,10 @@ import com.ericho.composefeatureproj.ui.theme.AppTheme
 import com.ericho.restaurant_queue.ui.NumberPad
 import com.google.android.play.core.splitcompat.SplitCompat
 
+@ExperimentalMaterial3Api
+@ExperimentalAnimationApi
 class PullActivity : ComponentActivity() {
-    @OptIn(ExperimentalAnimationApi::class)
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -79,6 +84,8 @@ class PullActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalMaterial3Api
+@RequiresApi(Build.VERSION_CODES.S)
 @SuppressLint("UnrememberedMutableState")
 @ExperimentalAnimationApi
 @Preview(showBackground = true)
