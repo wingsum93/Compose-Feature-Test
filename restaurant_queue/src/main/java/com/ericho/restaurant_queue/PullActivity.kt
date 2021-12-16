@@ -49,7 +49,9 @@ class PullActivity : ComponentActivity() {
                                     displayString.value = nextValue
                                 }
                             },
-                            onEnterClick = {},
+                            onEnterClick = { numberOfPeople ->
+                                pullViewModel.getTicket(numberOfPeople)
+                            },
                             onResetClick = {
                                 displayString.value = ""
                             }

@@ -17,7 +17,7 @@ fun NumberPad(
     modifier: Modifier = Modifier,
     displayNumberState: State<String>,
     onNumberClick: (Int) -> Unit = {},
-    onEnterClick: () -> Unit = {},
+    onEnterClick: (numberOfPeople: String) -> Unit = {},
     onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
@@ -113,7 +113,7 @@ fun NumberPad(
             NumberPadBigButton(
                 "Get Ticket",
                 Modifier.width(170.dp)
-            ) { onEnterClick.invoke() }
+            ) { onEnterClick.invoke(displayNumberState.value) }
             Spacer(modifier = Modifier.width(10.dp))
         }
     }
