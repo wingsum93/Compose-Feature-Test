@@ -30,7 +30,7 @@ fun NumberPadDisplayView(
         if (text == "") {
             // ui for not yet input no.
             Text(
-                text = "Please Input The Number of people",
+                text = "Enter Number of People",
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.Center),
