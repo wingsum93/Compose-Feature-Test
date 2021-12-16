@@ -8,10 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -21,11 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.rememberImagePainter
 import com.ericho.composefeatureproj.ui.AppPage
 import com.ericho.composefeatureproj.ui.theme.AppTheme
 import com.ericho.restaurant_queue.ui.NumberPad
 import com.google.android.play.core.splitcompat.SplitCompat
 
+@ExperimentalCoilApi
 @ExperimentalMaterial3Api
 @ExperimentalAnimationApi
 class PullActivity : ComponentActivity() {
@@ -44,6 +45,14 @@ class PullActivity : ComponentActivity() {
                             .fillMaxHeight()
                     ) {
                         val displayString = remember { mutableStateOf("") }
+                        val imagePainter = rememberImagePainter(R.drawable.bg_burger_101)
+                        Image(
+                            painter = imagePainter,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(120.dp)
+                                .align(Alignment.TopCenter)
+                        )
                         NumberPad(
                             modifier = Modifier
                                 .padding(20.dp)
