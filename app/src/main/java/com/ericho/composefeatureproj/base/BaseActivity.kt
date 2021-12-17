@@ -14,6 +14,7 @@ import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListene
 abstract class BaseActivity : ComponentActivity(), SplitInstallStateUpdatedListener {
 
     lateinit var manager: SplitInstallManager
+    val CONFIRMATION_REQUEST_CODE = 1
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase)

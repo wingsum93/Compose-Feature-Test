@@ -72,8 +72,6 @@ class MainActivity : BaseActivity() {
     }
 }
 
-private const val CONFIRMATION_REQUEST_CODE = 1
-
 @Composable
 fun Greeting(name: String) {
     Text(text = "Hello $name!")
