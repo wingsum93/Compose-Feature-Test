@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.ericho.restaurant_queue.PullViewModel
 import com.ericho.restaurant_queue.R
+import com.ericho.restaurant_queue.Route
 
 
 @ExperimentalAnimationApi
@@ -48,6 +49,7 @@ fun HomePageScreen(
             },
             onEnterClick = { numberOfPeople ->
                 vm.getTicket(numberOfPeople)
+                navHostController.navigate(Route.WAITING)
             },
             onResetClick = {
                 displayString.value = ""
