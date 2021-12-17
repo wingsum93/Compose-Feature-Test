@@ -1,56 +1,77 @@
 package com.ericho.restaurant_queue.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
-import com.ericho.restaurant_queue.PullViewModel
 import com.ericho.restaurant_queue.R
 
 @Composable
-fun WaitingPage(
-    navHostController: NavHostController,
-    vm: PullViewModel = PullViewModel()
+fun WaitingPageUI(
+    numberOfPeople: String,
+    ticketQueueNumber: String,
+    ticketReady: Boolean
 ) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
             .fillMaxHeight()
     ) {
+        Spacer(modifier = Modifier.height(50.dp))
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Cyan)
-
         ) {
             val imagePainter = rememberImagePainter(R.drawable.bg_burger_with_beer)
             Image(
                 painter = imagePainter,
                 contentDescription = null,
                 modifier = Modifier
-                    .width(200.dp)
-                    .aspectRatio(4f / 3f)
+                    .width(300.dp)
+                    .aspectRatio(16f / 9f)
                     .align(Alignment.Center)
             )
         }
-        val string = vm.flow.collectAsState(initial = "")
-        Box {
+        Spacer(modifier = Modifier.height(50.dp))
+        Box(Modifier.fillMaxWidth()) {
             Text(
-                text = "Waiting order $ AAA ",
-                fontSize = 40.sp
+                text = "Waiting order ($numberOfPeople) $ticketQueueNumber",
+                fontSize = 24.sp,
+                modifier = Modifier
+                    .fillMaxWidth(.5f)
+                    .align(Alignment.Center)
             )
+        }
+        Spacer(modifier = Modifier.height(50.dp))
+        ticketReady
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            if (!ticketReady) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(80.dp)
+                        .align(Alignment.Center),
+                    color = MaterialTheme.colorScheme.primary
+                )
 
+            } else {
+                Text(
+                    text = "Your ticket is ready",
+                    modifier = Modifier
+                        .width(250.dp)
+                        .align(Alignment.Center)
+                )
+            }
         }
     }
 
@@ -59,6 +80,19 @@ fun WaitingPage(
 @Preview(showBackground = true)
 @Composable
 fun WaitingPagePreview() {
-    val c = rememberNavController()
-    WaitingPage(c)
+    WaitingPageUI(
+        "2",
+        "AAAAAAAA",
+        false
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun WaitingPagePreview_order_ready() {
+    WaitingPageUI(
+        "2",
+        "AAAAAAAA",
+        true
+    )
 }
