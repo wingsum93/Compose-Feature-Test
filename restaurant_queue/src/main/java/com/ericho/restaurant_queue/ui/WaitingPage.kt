@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,7 +52,6 @@ fun WaitingPageUI(
             )
         }
         Spacer(modifier = Modifier.height(50.dp))
-        ticketReady
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -67,6 +67,8 @@ fun WaitingPageUI(
             } else {
                 Text(
                     text = "Your ticket is ready",
+                    fontSize = 30.sp,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
                         .width(250.dp)
                         .align(Alignment.Center)

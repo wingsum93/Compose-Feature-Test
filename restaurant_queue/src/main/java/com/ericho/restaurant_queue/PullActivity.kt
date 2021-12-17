@@ -108,8 +108,8 @@ fun WaitingPageView(
 ) {
     val string = vm.flow.collectAsState(initial = "")
     WaitingPageUI(
-        "",
-        "",
-        false
+        "2",
+        "ABCD",
+        true
     )
 }
