@@ -17,7 +17,7 @@ fun NumberPad(
     modifier: Modifier = Modifier,
     displayNumberState: State<String>,
     onNumberClick: (Int) -> Unit = {},
-    onEnterClick: () -> Unit = {},
+    onEnterClick: (numberOfPeople: String) -> Unit = {},
     onResetClick: () -> Unit = {}
 ) {
     Column(modifier = modifier) {
@@ -25,22 +25,48 @@ fun NumberPad(
             NumberPadDisplayView(
                 text,
                 Modifier
-                    .width(190.dp)
+                    .width(220.dp)
                     .height(70.dp)
             )
         }
-
         Row(
             modifier = Modifier
-                .padding(0.dp, 10.dp)
+            //.fillMaxHeight(0.3f)
         ) {
             Spacer(modifier = Modifier.width(10.dp))
-            NumberPadBigButton(
-                "Reset",
-                Modifier.width(170.dp)
-            ) { onResetClick.invoke() }
+            NumberPadButton(
+                "1"
+            ) { onNumberClick.invoke(1) }
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadButton(
+                "2"
+            ) { onNumberClick.invoke(2) }
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadButton(
+                "3"
+            ) { onNumberClick.invoke(3) }
             Spacer(modifier = Modifier.width(10.dp))
         }
+        Spacer(modifier = Modifier.height(5.dp))
+        Row(
+            modifier = Modifier
+            //.fillMaxHeight(0.3f)
+        ) {
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadButton(
+                "4"
+            ) { onNumberClick.invoke(4) }
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadButton(
+                "5"
+            ) { onNumberClick.invoke(5) }
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadButton(
+                "6"
+            ) { onNumberClick.invoke(6) }
+            Spacer(modifier = Modifier.width(10.dp))
+        }
+        Spacer(modifier = Modifier.height(5.dp))
         Row(
             modifier = Modifier
             //.fillMaxHeight(0.3f)
@@ -70,51 +96,24 @@ fun NumberPad(
         ) {
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadButton(
-                "4"
-            ) { onNumberClick.invoke(4) }
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
-                "5"
-            ) { onNumberClick.invoke(5) }
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
-                "6"
-            ) { onNumberClick.invoke(6) }
-            Spacer(modifier = Modifier.width(10.dp))
-        }
-        Spacer(modifier = Modifier.height(5.dp))
-        Row(
-            modifier = Modifier
-            //.fillMaxHeight(0.3f)
-        ) {
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
-                "1"
-            ) { onNumberClick.invoke(1) }
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
-                "2"
-            ) { onNumberClick.invoke(2) }
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
-                "3"
-            ) { onNumberClick.invoke(3) }
-            Spacer(modifier = Modifier.width(10.dp))
-        }
-        Spacer(modifier = Modifier.height(5.dp))
-        Row(
-            modifier = Modifier
-            //.fillMaxHeight(0.3f)
-        ) {
-            Spacer(modifier = Modifier.width(10.dp))
-            NumberPadButton(
                 "0"
             ) { onNumberClick.invoke(0) }
             Spacer(modifier = Modifier.width(10.dp))
             NumberPadBigButton(
-                "Enter",
-                Modifier.width(110.dp)
-            ) { onEnterClick.invoke() }
+                "Reset",
+                Modifier.width(130.dp)
+            ) { onResetClick.invoke() }
+            Spacer(modifier = Modifier.width(10.dp))
+        }
+        Row(
+            modifier = Modifier
+                .padding(0.dp, 10.dp)
+        ) {
+            Spacer(modifier = Modifier.width(10.dp))
+            NumberPadBigButton(
+                "Get Ticket",
+                Modifier.width(200.dp)
+            ) { onEnterClick.invoke(displayNumberState.value) }
             Spacer(modifier = Modifier.width(10.dp))
         }
     }
@@ -127,6 +126,6 @@ fun NumberPad(
 fun SeeNumberPad() {
     NumberPad(
         modifier = Modifier.padding(20.dp),
-        displayNumberState = mutableStateOf("77")
+        displayNumberState = mutableStateOf("")
     )
 }

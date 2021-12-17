@@ -7,7 +7,11 @@ import com.ericho.composefeatureproj.model.SeatQueue
 
 class PullViewModel constructor() : ViewModel() {
 
+
     val repo: RestaurantRepo = Injection.provideRestaurantRepo()
     val items: List<SeatQueue> = repo.getRestaurantList()
 
+    fun getTicket(numberOfPeople: String) {
+
+    }
 }
