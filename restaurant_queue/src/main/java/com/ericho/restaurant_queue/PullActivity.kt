@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -105,10 +104,9 @@ fun WaitingPageView(
     navHostController: NavHostController,
     vm: PullViewModel = PullViewModel()
 ) {
-    val string = vm.flow.collectAsState(initial = "")
     WaitingPageUI(
-        "",
-        "",
+        vm.numberOfPeople.toString(),
+        vm.ticketQueueCode?.queueCode,
         false
     )
 }

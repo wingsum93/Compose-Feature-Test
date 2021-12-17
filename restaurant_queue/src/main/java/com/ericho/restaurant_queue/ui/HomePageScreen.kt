@@ -15,7 +15,6 @@ import com.ericho.restaurant_queue.PullViewModel
 import com.ericho.restaurant_queue.R
 import com.ericho.restaurant_queue.Route
 
-
 @ExperimentalAnimationApi
 @Composable
 fun HomePageScreen(

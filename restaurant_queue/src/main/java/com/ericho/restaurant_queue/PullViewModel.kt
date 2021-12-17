@@ -1,23 +1,41 @@
 package com.ericho.restaurant_queue
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ericho.composefeatureproj.api.RestaurantRepo
 import com.ericho.composefeatureproj.di.Injection
-import com.ericho.composefeatureproj.model.SeatQueue
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.ericho.composefeatureproj.model.Queue
+import kotlinx.coroutines.launch
 
-class PullViewModel constructor() : ViewModel() {
+class PullViewModel(val repo: RestaurantRepo = Injection.provideRestaurantRepo()) : ViewModel() {
 
+    var numberOfPeople by mutableStateOf(0)
+        private set
 
-    val repo: RestaurantRepo = Injection.provideRestaurantRepo()
-    val items: List<SeatQueue> = repo.getRestaurantList()
+    var ticketQueueCode by mutableStateOf<Queue?>(null)
+        private set
 
-    val flow: Flow<String> = flow {
-        emit("a")
+    fun getTicket(people: String) {
+        viewModelScope.launch {
+            people.toIntOrNull()?.apply {
+                numberOfPeople = this
+                val result = repo.getOneTicket(this)
+                if (result.isSuccess) {
+                    ticketQueueCode = result.getOrThrow()
+                } else {
+                    result.getOrElse {
+                        exceptionHandler(it)
+                    }
+                }
+            }
+        }
     }
 
-    fun getTicket(numberOfPeople: String) {
-
+    private fun exceptionHandler(e: Throwable) {
+        e.printStackTrace()
     }
 }
