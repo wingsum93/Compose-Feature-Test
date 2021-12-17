@@ -28,6 +28,7 @@ import com.ericho.composefeatureproj.ui.AppPage
 import com.ericho.composefeatureproj.ui.theme.AppTheme
 import com.ericho.restaurant_queue.ui.HomePageScreen
 import com.ericho.restaurant_queue.ui.NumberPad
+import com.ericho.restaurant_queue.ui.WaitingPage
 import com.google.android.play.core.splitcompat.SplitCompat
 
 @ExperimentalCoilApi
@@ -45,14 +46,14 @@ class PullActivity : ComponentActivity() {
                 AppPage("Instant App", navController = navController) { innerPadding ->
                     NavHost(
                         navController = navController,
-                        startDestination = "/fire",
+                        startDestination = Route.HOME,
                         modifier = Modifier.padding(innerPadding)
                     ) {
-                        composable("/fire") {
+                        composable(Route.HOME) {
                             HomePageScreen(navHostController = navController, vm = pullViewModel)
                         }
-                        composable("/waiting") {
-
+                        composable(Route.WAITING) {
+                            WaitingPage(navHostController = navController, vm = pullViewModel)
                         }
                     }
                 }
