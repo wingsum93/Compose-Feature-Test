@@ -69,6 +69,25 @@ class PullActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun WaitingPageView(
+    navHostController: NavHostController,
+    vm: PullViewModel = PullViewModel()
+) {
+    remember {
+        vm.haveTable
+    }
+    WaitingPageUI(
+        vm.numberOfPeople,
+        vm.ticketQueueCode?.queueCode,
+        vm.haveTable.value,
+        {
+            vm.stopUpdateTableStatus()
+            navHostController.popBackStack()
+        }
+    )
+}
+
 @RequiresApi(Build.VERSION_CODES.S)
 @SuppressLint("UnrememberedMutableState")
 @ExperimentalAnimationApi
@@ -98,23 +117,4 @@ fun DefaultPreview3() {
     AppTheme {
         WaitingPageUI(numberOfPeople = 2, ticketQueueNumber = "", false)
     }
-}
-
-@Composable
-fun WaitingPageView(
-    navHostController: NavHostController,
-    vm: PullViewModel = PullViewModel()
-) {
-    remember {
-        vm.haveTable
-    }
-    WaitingPageUI(
-        vm.numberOfPeople,
-        vm.ticketQueueCode?.queueCode,
-        vm.haveTable.value,
-        {
-            vm.stopUpdateTableStatus()
-            navHostController.popBackStack()
-        }
-    )
 }
