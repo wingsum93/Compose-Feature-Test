@@ -15,7 +15,6 @@ object Injection {
         return Retrofit.Builder()
             .baseUrl("https://restaurants-queue.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(provideOkhttpClient())
             .build()
     }
