@@ -107,6 +107,10 @@ fun WaitingPageView(
     WaitingPageUI(
         vm.numberOfPeople,
         vm.ticketQueueCode?.queueCode,
-        false
+        vm.haveTable,
+        {
+            vm.stopUpdateTableStatus()
+            navHostController.popBackStack()
+        }
     )
 }
