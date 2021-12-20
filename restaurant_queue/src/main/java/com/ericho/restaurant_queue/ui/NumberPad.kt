@@ -113,7 +113,9 @@ fun NumberPad(
             NumberPadBigButton(
                 "Get Ticket",
                 Modifier.width(200.dp)
-            ) { onEnterClick.invoke(displayNumberState.value) }
+            ) {
+                onEnterClick.invoke(displayNumberState.value)
+            }
             Spacer(modifier = Modifier.width(10.dp))
         }
     }

@@ -9,18 +9,14 @@ import retrofit2.Retrofit
 import retrofit2.create
 import java.io.IOException
 
-class RestaurantRepo constructor(
-    retrofit: Retrofit
-) {
+class RestaurantRepo(retrofit: Retrofit) {
 
     private val api: RestaurantAPI = retrofit.create()
 
-
     suspend fun getOneTicket(number: Int = 1): Result<Queue> {
-        val call = api.getTicket(number)
         return withContext(Dispatchers.IO) {
             try {
-                val res = call.execute()
+                val res = api.getTicket(number)
                 if (res.isSuccessful) {
                     val body = res.body()
                     if (body?.status == true && body.result != null) {
@@ -38,10 +34,9 @@ class RestaurantRepo constructor(
     }
 
     suspend fun checkQueueStatus(code: String): Result<Boolean> {
-        val call = api.checkSingleQueue(code)
+        val res = api.checkSingleQueue(code)
         return withContext(Dispatchers.IO) {
             try {
-                val res = call.execute()
                 if (res.isSuccessful) {
                     val body = res.body()
                     if (body?.status == true && body.result != null) {
@@ -59,10 +54,9 @@ class RestaurantRepo constructor(
     }
 
     suspend fun checkQueueOfType(number: Int): Result<Queue> {
-        val call = api.checkQueueOfType(number)
+        val res = api.checkQueueOfType(number)
         return withContext(Dispatchers.IO) {
             try {
-                val res = call.execute()
                 if (res.isSuccessful) {
                     val body = res.body()
                     if (body?.status == true && body.result != null) {

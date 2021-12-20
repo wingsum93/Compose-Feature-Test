@@ -18,7 +18,7 @@ import com.ericho.restaurant_queue.R
 @Composable
 fun WaitingPageUI(
     numberOfPeople: String,
-    ticketQueueNumber: String,
+    ticketQueueNumber: String?,
     ticketReady: Boolean
 ) {
     Column(
