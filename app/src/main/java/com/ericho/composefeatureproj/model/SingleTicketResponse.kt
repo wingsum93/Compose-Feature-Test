@@ -5,8 +5,8 @@ class SingleTicketResponse {
     var result: Data? = null
 
     class Data {
-        val ready: Int = 1
+        val ready: Int = 0
         val hasTable: Boolean
-            get() = ready == 1
+            get() = ready >= 1
     }
 }

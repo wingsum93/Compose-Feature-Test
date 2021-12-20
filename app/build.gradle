@@ -77,6 +77,7 @@ dependencies {
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
     api "com.squareup.okhttp3:okhttp:4.9.3"
+    api "com.squareup.okhttp3:logging-interceptor:4.9.3"
     api 'com.google.code.gson:gson:2.8.9'
     api 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
