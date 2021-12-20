@@ -95,7 +95,7 @@ fun DefaultPreview2() {
 @Preview(showBackground = true)
 fun DefaultPreview3() {
     AppTheme {
-        WaitingPageUI(numberOfPeople = "", ticketQueueNumber = "", false)
+        WaitingPageUI(numberOfPeople = 2, ticketQueueNumber = "", false)
     }
 }
 
@@ -105,7 +105,7 @@ fun WaitingPageView(
     vm: PullViewModel = PullViewModel()
 ) {
     WaitingPageUI(
-        vm.numberOfPeople.toString(),
+        vm.numberOfPeople,
         vm.ticketQueueCode?.queueCode,
         false
     )

@@ -1,8 +1,8 @@
 package com.ericho.composefeatureproj.di
 
 import com.ericho.composefeatureproj.api.RestaurantRepo
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,7 +20,10 @@ object Injection {
     }
 
     fun provideOkhttpClient(): OkHttpClient {
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
+            .addNetworkInterceptor(logging)
             .build()
     }
 }

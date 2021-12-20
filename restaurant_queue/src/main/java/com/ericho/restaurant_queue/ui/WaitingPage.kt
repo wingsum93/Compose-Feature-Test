@@ -6,6 +6,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -17,7 +18,7 @@ import com.ericho.restaurant_queue.R
 
 @Composable
 fun WaitingPageUI(
-    numberOfPeople: String,
+    numberOfPeople: Int,
     ticketQueueNumber: String?,
     ticketReady: Boolean
 ) {
@@ -56,7 +57,10 @@ fun WaitingPageUI(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            if (!ticketReady) {
+            val haveTable = remember {
+                ticketReady
+            }
+            if (!haveTable) {
                 CircularProgressIndicator(
                     modifier = Modifier
                         .size(80.dp)
@@ -83,7 +87,7 @@ fun WaitingPageUI(
 @Composable
 fun WaitingPagePreview() {
     WaitingPageUI(
-        "2",
+        2,
         "AAAAAAAA",
         false
     )
@@ -93,7 +97,7 @@ fun WaitingPagePreview() {
 @Composable
 fun WaitingPagePreview_order_ready() {
     WaitingPageUI(
-        "2",
+        2,
         "AAAAAAAA",
         true
     )
