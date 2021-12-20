@@ -1,6 +1,7 @@
 package com.ericho.restaurant_queue
 
 import android.util.Log
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -23,8 +24,8 @@ class PullViewModel(
     var ticketQueueCode by mutableStateOf<Queue?>(null)
         private set
 
-    var haveTable by mutableStateOf<Boolean>(false)
-        private set
+    private var _haveTable = mutableStateOf(false)
+    val haveTable: State<Boolean> = _haveTable
 
     private var checkingTableJob: Job? = null
 
@@ -57,7 +58,7 @@ class PullViewModel(
                 val result = repo.checkQueueStatus(queueCode)
                 Log.i(TAG, "checking table !!")
                 if (result.isSuccess) {
-                    haveTable = result.getOrThrow()
+                    _haveTable.value = result.getOrThrow()
                     Log.i(TAG, "have table = $haveTable")
                 } else {
                     result.getOrElse {
@@ -72,7 +73,11 @@ class PullViewModel(
     fun stopUpdateTableStatus() {
         checkingTableJob?.cancel()
         ticketQueueCode = null
-        haveTable = false
+        _haveTable.value = false
+    }
+
+    fun test() {
+        _haveTable.value = true
     }
 
     private val TAG = "PullViewModel"

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -104,10 +105,13 @@ fun WaitingPageView(
     navHostController: NavHostController,
     vm: PullViewModel = PullViewModel()
 ) {
+    remember {
+        vm.haveTable
+    }
     WaitingPageUI(
         vm.numberOfPeople,
         vm.ticketQueueCode?.queueCode,
-        vm.haveTable,
+        vm.haveTable.value,
         {
             vm.stopUpdateTableStatus()
             navHostController.popBackStack()

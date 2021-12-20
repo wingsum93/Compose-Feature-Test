@@ -7,7 +7,6 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -24,7 +23,7 @@ fun WaitingPageUI(
     ticketReady: Boolean,
     onLeavePage: () -> Unit = {}
 ) {
-    BackHandler() {
+    BackHandler {
         onLeavePage.invoke()
     }
     Column(
@@ -50,10 +49,19 @@ fun WaitingPageUI(
         Spacer(modifier = Modifier.height(50.dp))
         Box(Modifier.fillMaxWidth()) {
             Text(
-                text = "Waiting order ($numberOfPeople) $ticketQueueNumber",
+                text = "Waiting order ($numberOfPeople)",
                 fontSize = 24.sp,
                 modifier = Modifier
                     .fillMaxWidth(.5f)
+                    .align(Alignment.Center)
+            )
+        }
+        Box(Modifier.fillMaxWidth()) {
+            Text(
+                text = "$ticketQueueNumber",
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .fillMaxWidth(.75f)
                     .align(Alignment.Center)
             )
         }
@@ -62,10 +70,7 @@ fun WaitingPageUI(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            val haveTable = remember {
-                ticketReady
-            }
-            if (!haveTable) {
+            if (!ticketReady) {
                 CircularProgressIndicator(
                     modifier = Modifier
                         .size(80.dp)
@@ -93,7 +98,7 @@ fun WaitingPageUI(
 fun WaitingPagePreview() {
     WaitingPageUI(
         2,
-        "AAAAAAAA",
+        "8736b786595ae22195fd19ecc9dae02d",
         false
     )
 }
@@ -103,7 +108,7 @@ fun WaitingPagePreview() {
 fun WaitingPagePreview_order_ready() {
     WaitingPageUI(
         2,
-        "AAAAAAAA",
+        "8736b786595ae22195fd19ecc9dae02d",
         true
     )
 }
