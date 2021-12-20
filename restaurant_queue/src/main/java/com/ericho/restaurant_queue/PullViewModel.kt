@@ -69,6 +69,12 @@ class PullViewModel(
         }
     }
 
+    fun stopUpdateTableStatus() {
+        checkingTableJob?.cancel()
+        ticketQueueCode = null
+        haveTable = false
+    }
+
     private val TAG = "PullViewModel"
     private fun exceptionHandler(e: Throwable) {
         Log.e(TAG, "exceptionHandler", e)

@@ -1,5 +1,6 @@
 package com.ericho.restaurant_queue.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
@@ -20,8 +21,12 @@ import com.ericho.restaurant_queue.R
 fun WaitingPageUI(
     numberOfPeople: Int,
     ticketQueueNumber: String?,
-    ticketReady: Boolean
+    ticketReady: Boolean,
+    onLeavePage: () -> Unit = {}
 ) {
+    BackHandler() {
+        onLeavePage.invoke()
+    }
     Column(
         modifier = Modifier
             .fillMaxHeight()
