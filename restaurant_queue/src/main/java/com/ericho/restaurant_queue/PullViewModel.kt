@@ -52,13 +52,13 @@ class PullViewModel(
         //start another table checking
         if (queueCode == null) return
 //        checkingTableJob?.cancel()
-        while (true) {
-            checkingTableJob = viewModelScope.launch {
+        checkingTableJob = viewModelScope.launch {
+            while (true) {
                 val result = repo.checkQueueStatus(queueCode)
                 Log.i(TAG, "checking table !!")
                 if (result.isSuccess) {
-                    Log.i(TAG, "have table !!")
                     haveTable = result.getOrThrow()
+                    Log.i(TAG, "have table = $haveTable")
                 } else {
                     result.getOrElse {
                         exceptionHandler(it)
