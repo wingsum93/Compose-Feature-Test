@@ -1,6 +1,7 @@
 package com.ericho.composefeatureproj.di
 
 import com.ericho.composefeatureproj.api.RestaurantRepo
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,14 +13,17 @@ object Injection {
     }
 
     fun provideRetrofit(): Retrofit {
+        val gson = GsonBuilder()
+            .setDateFormat("YYYY-MM-dd HH:mm:ss")
+            .create()
         return Retrofit.Builder()
             .baseUrl("https://restaurants-queue.herokuapp.com")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(provideOkhttpClient())
             .build()
     }
 
-    fun provideOkhttpClient(): OkHttpClient {
+    private fun provideOkhttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()

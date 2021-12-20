@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -68,6 +69,25 @@ class PullActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun WaitingPageView(
+    navHostController: NavHostController,
+    vm: PullViewModel = PullViewModel()
+) {
+    remember {
+        vm.haveTable
+    }
+    WaitingPageUI(
+        vm.numberOfPeople,
+        vm.ticketQueueCode?.queueCode,
+        vm.haveTable.value,
+        {
+            vm.stopUpdateTableStatus()
+            navHostController.popBackStack()
+        }
+    )
+}
+
 @RequiresApi(Build.VERSION_CODES.S)
 @SuppressLint("UnrememberedMutableState")
 @ExperimentalAnimationApi
@@ -97,20 +117,4 @@ fun DefaultPreview3() {
     AppTheme {
         WaitingPageUI(numberOfPeople = 2, ticketQueueNumber = "", false)
     }
-}
-
-@Composable
-fun WaitingPageView(
-    navHostController: NavHostController,
-    vm: PullViewModel = PullViewModel()
-) {
-    WaitingPageUI(
-        vm.numberOfPeople,
-        vm.ticketQueueCode?.queueCode,
-        vm.haveTable,
-        {
-            vm.stopUpdateTableStatus()
-            navHostController.popBackStack()
-        }
-    )
 }
