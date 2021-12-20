@@ -56,9 +56,10 @@ fun WaitingPageUI(
                     .align(Alignment.Center)
             )
         }
+        val queueNumberDisplayText = ticketQueueNumber ?: "Loading Ticket Code"
         Box(Modifier.fillMaxWidth()) {
             Text(
-                text = "$ticketQueueNumber",
+                text = queueNumberDisplayText,
                 fontSize = 16.sp,
                 modifier = Modifier
                     .fillMaxWidth(.75f)

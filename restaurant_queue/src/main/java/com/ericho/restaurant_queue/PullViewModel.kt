@@ -52,7 +52,7 @@ class PullViewModel(
     private fun checkingTableStatus(queueCode: String?) {
         //start another table checking
         if (queueCode == null) return
-//        checkingTableJob?.cancel()
+        checkingTableJob?.cancel()
         checkingTableJob = viewModelScope.launch {
             while (true) {
                 val result = repo.checkQueueStatus(queueCode)
@@ -60,6 +60,9 @@ class PullViewModel(
                 if (result.isSuccess) {
                     _haveTable.value = result.getOrThrow()
                     Log.i(TAG, "have table = $haveTable")
+                    if (haveTable.value) {
+                        checkingTableJob?.cancel()
+                    }
                 } else {
                     result.getOrElse {
                         exceptionHandler(it)
@@ -74,10 +77,6 @@ class PullViewModel(
         checkingTableJob?.cancel()
         ticketQueueCode = null
         _haveTable.value = false
-    }
-
-    fun test() {
-        _haveTable.value = true
     }
 
     private val TAG = "PullViewModel"
