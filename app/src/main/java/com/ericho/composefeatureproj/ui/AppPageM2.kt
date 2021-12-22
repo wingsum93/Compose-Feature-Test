@@ -9,7 +9,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
-import androidx.navigation.NavController
 import com.ericho.composefeatureproj.R
 import com.ericho.composefeatureproj.base.CraneDrawer
 import kotlinx.coroutines.launch
@@ -17,7 +16,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun AppPageWithM2(
     title: String,
-    navController: NavController,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val scaffoldState: ScaffoldState = rememberScaffoldState()

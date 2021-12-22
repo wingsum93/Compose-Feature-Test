@@ -41,7 +41,6 @@ fun NumberPadDisplayView(
                 textAlign = TextAlign.Start,
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold
             )
         } else {
             // ui for input no.
@@ -77,7 +76,7 @@ fun previewNumberDisplayView() {
 fun previewNumberDisplayView_init() {
     AppTheme {
         NumberPadDisplayView(
-            "",
+            "Get Ticket",
             Modifier
                 .width(190.dp)
                 .height(70.dp)

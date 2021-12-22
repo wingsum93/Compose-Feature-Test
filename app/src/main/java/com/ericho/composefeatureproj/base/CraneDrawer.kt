@@ -5,8 +5,8 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -24,7 +24,7 @@ fun CraneDrawer(
 ) {
     Column(
         modifier
-            .background(color = MaterialTheme.colors.primary)
+            .background(color = MaterialTheme.colorScheme.primary)
             .fillMaxSize()
             .padding(start = 24.dp, top = 12.dp)
     ) {
@@ -33,7 +33,7 @@ fun CraneDrawer(
             painter = painterResource(R.drawable.ic_baseline_fastfood_24),
             contentDescription = "",
             colorFilter = ColorFilter.tint(
-                MaterialTheme.colors.onPrimary
+                MaterialTheme.colorScheme.onPrimary
             )
         )
         for (screen in screens) {
@@ -41,8 +41,8 @@ fun CraneDrawer(
             Text(
                 modifier = modifier,
                 text = screen,
-                color = MaterialTheme.colors.onPrimary,
-                style = MaterialTheme.typography.h4
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.headlineMedium
             )
         }
     }

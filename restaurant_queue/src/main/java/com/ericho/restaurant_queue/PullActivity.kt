@@ -44,7 +44,7 @@ class PullActivity : ComponentActivity() {
             AppTheme {
                 val pullViewModel: PullViewModel = viewModel()
                 val navController = rememberNavController()
-                AppPageWithM2("Instant App", navController = navController) { innerPadding ->
+                AppPageWithM2("Instant App") { innerPadding ->
                     NavHost(
                         navController = navController,
                         startDestination = Route.HOME,

@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun NumberPadButton(
@@ -29,7 +30,9 @@ fun NumberPadButton(
             .border(1.dp, MaterialTheme.colorScheme.outline, shape = RoundedCornerShape(20.0.dp))
     ) {
         Text(
-            text = text
+            text = text,
+            fontSize = 20.sp,
+            style = MaterialTheme.typography.labelLarge
         )
     }
 }
