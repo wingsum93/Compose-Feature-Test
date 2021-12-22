@@ -46,7 +46,6 @@ fun AppPageWithM2(
                 }
             )
         },
-        contentColor = MaterialTheme.colors.onPrimary,
         scaffoldState = scaffoldState,
         drawerContent = {
             CraneDrawer()

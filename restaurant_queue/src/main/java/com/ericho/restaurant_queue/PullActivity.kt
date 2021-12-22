@@ -92,7 +92,7 @@ fun WaitingPageView(
 @ExperimentalAnimationApi
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview2() {
+fun NumberPadPreview2() {
     AppTheme {
         Box(
             modifier = Modifier
@@ -112,8 +112,8 @@ fun DefaultPreview2() {
 @RequiresApi(Build.VERSION_CODES.S)
 @Composable
 @Preview(showBackground = true)
-fun DefaultPreview3() {
+fun WaitingPagePreview() {
     AppTheme {
-        WaitingPageUI(numberOfPeople = 2, ticketQueueNumber = "", false)
+        WaitingPageUI(numberOfPeople = 2, ticketQueueNumber = "SAZZZZZZZZZAOP", false)
     }
 }
