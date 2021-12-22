@@ -26,7 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
-import com.ericho.composefeatureproj.ui.AppPage
+import com.ericho.composefeatureproj.ui.AppPageWithM2
 import com.ericho.composefeatureproj.ui.theme.AppTheme
 import com.ericho.restaurant_queue.ui.HomePageScreen
 import com.ericho.restaurant_queue.ui.NumberPad
@@ -44,8 +44,7 @@ class PullActivity : ComponentActivity() {
             AppTheme {
                 val pullViewModel: PullViewModel = viewModel()
                 val navController = rememberNavController()
-                // A surface container using the 'background' color from the theme
-                AppPage("Instant App", navController = navController) { innerPadding ->
+                AppPageWithM2("Instant App", navController = navController) { innerPadding ->
                     NavHost(
                         navController = navController,
                         startDestination = Route.HOME,

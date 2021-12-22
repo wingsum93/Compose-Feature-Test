@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 
 @ExperimentalMaterial3Api
 @Composable
-fun AppPage(
+fun AppPageWithM3(
     title: String,
     navController: NavController,
     content: @Composable (PaddingValues) -> Unit,
@@ -30,6 +30,7 @@ fun AppPage(
                     }
                 }
             )
-        }, content = content
+        },
+        content = content
     )
 }
