@@ -37,10 +37,7 @@ fun AppPageWithM2(
                     val painter = painterResource(R.drawable.ic_baseline_fastfood_24)
                     IconButton(onClick = {
                         scope.launch {
-                            if (scaffoldState.drawerState.isClosed) {
-                                scaffoldState.drawerState.open()
-                            } else
-                                scaffoldState.drawerState.close()
+                            scaffoldState.drawerState.open()
                         }
                     }) {
                         Image(
