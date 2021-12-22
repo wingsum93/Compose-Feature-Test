@@ -29,7 +29,8 @@ fun NumberPadBigButton(
             .border(1.dp, MaterialTheme.colorScheme.outline, shape = RoundedCornerShape(20.0.dp))
     ) {
         Text(
-            text = text
+            text = text,
+            style = MaterialTheme.typography.labelLarge
         )
     }
 }
